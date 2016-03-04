@@ -5,9 +5,9 @@ import re
 
 # Regexs
 
-regex_resize = ur'^(?:-resize|-r)=(\d+)?[x,](\d+)?'
-regex_time = ur'^(?:-time|-t)=([\d:]*)(?:$|\-([\d:]*)$)'
-filenameReg = ur'(.+)(\.\w+)'
+regex_resize = r'^(\d+)?x(\d+)?'
+regex_time = r'^([\d:]*)(?:$|-([\d:]*)$)'
+filenameReg = r'(.+)(\.\w+)'
 
 
 noSound   = False
@@ -18,7 +18,7 @@ timed     = False
 
 # Info
 if len(argv) == 1:
-	print "webm.py FILENAME\n-ns -> No audio\nt=[START FROM]-[DURATION] -> Trims the video duration, use 00:00:00 format or seconds\n[WIDTH]x[HEIGHT] -> Blank keeps aspect ratio - Examples: 640x480 , 640x , x480"
+	print "webm.py FILENAME\n-ns -> No audio\n[START FROM]-[DURATION] -> Trims the video duration, use 00:00:00 format or seconds\n[WIDTH]x[HEIGHT] -> Blank keeps aspect ratio - Examples: 640x480 , 640x , x480"
 	quit()
 
 # Parameters
@@ -26,7 +26,7 @@ for i in argv:
 
 	# Check if Sound Off
 	
-	if i == "-nosound" or "-ns":
+	if i == "-nosound" or i == "-ns":
 		soundstring = i
 		noSound     = True
 
@@ -64,9 +64,9 @@ for i in argv:
 
 # Create Command
 
-command = []
-command.append("ffmpeg")
-if timed:
+command = []                                       		# Create array
+command.append("ffmpeg")                           		# ffmpeg
+if timed:                                          		# Check if timed
 	if startTime:
 		command.append("-ss")
 		command.append(startTime)
@@ -74,24 +74,24 @@ if timed:
 		command.append("-t")
 		command.append(elapse)
 command.append("-i")
-command.append(filename + filenameext)
-command.append("-c:v")
-command.append("libvpx")
-command.append("-crf")
-command.append("32")
-command.append("-b:v")
-command.append("900K")
-command.append("-threads")
-command.append("1")
+command.append(filename + filenameext)             		# File to convert
+command.append("-c:v")                             		# Video Codec
+command.append("libvpx")                           		# Video Codec
+command.append("-crf")                             		# Quality settings
+command.append("32")                               		# Quality settings
+command.append("-b:v")                             		# Quality settings - Bitrate
+command.append("900K")                             		# Quality settings - Bitrate
+command.append("-threads")                         		# Quality settings - Threads
+command.append("1")                                		# Quality settings - Threads
 if noSound:
-	command.append("-an")
+	command.append("-an")                          		# Disable sound
 else:
-	command.append("-c:a")
-	command.append("libvorbis")
+	command.append("-c:a")                         		# Audio Codec
+	command.append("libvorbis")                    		# Audio Codec
 if resize:
-	command.append("-vf")
-	command.append("scale=" + width + ":" + height)
-command.append(filename + ".webm")
+	command.append("-vf")                          		# Size
+	command.append("scale=" + width + ":" + height)		# Size
+command.append(filename + ".webm")                 		# New Filename
 
 print command
 

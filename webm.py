@@ -6,8 +6,8 @@ import re
 # Regexs
 
 regex_resize = r'^(\d+)?x(\d+)?'
-regex_time = r'^([\d:]*)(?:$|-([\d:]*)$)'
-filenameReg = r'(.+)(\.\w+)'
+regex_time   = r'^([\d:]*)(?:$|-([\d:]*)$)'
+filenameReg  = r'(.+)(\.\w+)'
 
 
 noSound   = False
@@ -25,7 +25,7 @@ if len(argv) == 1:
 for i in argv:
 
 	# Check if Sound Off
-	
+
 	if i == "-nosound" or i == "-ns":
 		soundstring = i
 		noSound     = True

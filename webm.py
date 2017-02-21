@@ -18,7 +18,7 @@ timed     = False
 
 # Info
 if len(argv) == 1:
-	print "webm.py FILENAME\n-ns -> No audio\n[START FROM]-[DURATION] -> Trims the video duration, use 00:00:00 format or seconds\n[WIDTH]x[HEIGHT] -> Blank keeps aspect ratio - Examples: 640x480 , 640x , x480"
+	print("webm.py FILENAME\n-ns -> No audio\n[START FROM]-[DURATION] -> Trims the video duration, use 00:00:00 format or seconds\n[WIDTH]x[HEIGHT] -> Blank keeps aspect ratio - Examples: 640x480 , 640x , x480")
 	quit()
 
 # Parameters
@@ -93,7 +93,7 @@ if resize:
 	command.append("scale=" + width + ":" + height)		# Size
 command.append(filename + ".webm")                 		# New Filename
 
-print command
+print(command)
 
 # Call the command
 

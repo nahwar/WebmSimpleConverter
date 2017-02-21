@@ -10,4 +10,5 @@ setup(
   download_url = 'https://github.com/nahwar/webmc/tarball/0.1', # I'll explain this in a second
   keywords = ['testing', 'logging', 'example', 'webm', 'ffmpeg'], # arbitrary keywords
   classifiers = [],
+  scripts = ['webmc/webmc'],
 )

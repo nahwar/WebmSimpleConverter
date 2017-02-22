@@ -66,7 +66,11 @@ if len(argv) == 1:
         print("webm.py FILENAME\n-ns -> No audio\n[START FROM]-[DURATION] -> Trims the video duration, use 00:00:00 format or seconds\n[WIDTH]x[HEIGHT] -> Blank keeps aspect ratio - Examples: 640x480 , 640x , x480")
 
         import sys
-        from PyQt4.QtGui import *
+        try:
+            from PyQt4.QtGui import *
+        except ImportError as e:
+            print("\n PyQt4 not found, install it if you want to use the GUI")
+            exit()
         from PyQt4.QtCore import pyqtSlot
 
 

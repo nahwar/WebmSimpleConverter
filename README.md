@@ -17,7 +17,7 @@ pip install webmc
 Just run `webmc` for the GUI
 
 ### CLI arguments
-* webm.py FILENAME
+* webm FILENAME
 * -ns -> No audio
 * [START FROM]-[DURATION] -> Trims the video duration, use 00:00:00 format or seconds
 * [WIDTH]x[HEIGHT] -> Blank keeps aspect ratio - Examples: 640x480 , 640x , x480
